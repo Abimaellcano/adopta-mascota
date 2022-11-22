@@ -1,24 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required Meta Tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <!-- bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/responsive.css" />
-
+  
   <title>Adopta Mascota</title>
 </head>
-
 <body id="home-pg">
+  <!-- Modal -->
+  <div class="modal fade" id="contact-modal" tabindex="-1" role="dialog" aria-labelledby="contact-modal-label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contact-modal-label">Contacto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name-in">Nombre</label>
+              <input type="text" name="name-in" class="form-control" id="name-in" placeholder="Ingresa tu Nombre" required>
+            </div>
+              <div class="valid-feedback">
+                Bien!                
+              </div>
+              <div class="invalid-feedback">
+                Este campo es obligatorio                
+              </div>
+            <div class="form-group">
+              <label for="email-in">Email</label>
+              <input type="email" class="form-control" id="email-in" aria-describedby="email-help" placeholder="email@example.com">
+              <small id="email-help" class="form-text text-muted">
+                No compartiremos tus datos
+              </small>
+              <div class="invalid-feedback">
+                Verifica el formato del email
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="comment-in">Comentario</label>
+              <textarea class="form-control" id="comment-in" rows="4" required></textarea>
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="receive-info">
+              <label class="form-check-label" for="receive-info">Quiero recibir correos informatívos</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container main-container">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg" id="default-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="default-navbar">
       <a class="navbar-brand" href="#">Adopta Mascotas</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-opts"
         aria-controls="navbar-opts" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,14 +81,19 @@
             <a class="nav-link" href="#">Donativos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contácto</a>
+            <a class="nav-link" data-toggle="modal" data-target="#contact-modal">Contácto</a>
           </li>
         </ul>
       </div>
     </nav>
-
     <!-- Carrousel -->
-    <section class="carousel-sect">
+    <div section class="carousel-sect">
+      <div class="alert alert-success alert-dismissible fade" text-centet role="alert" id="contact-alert" style="display:none">
+        <strong>Mensaje Enviado</strong> Gracias por contactarnos!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div id="home-carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
@@ -55,21 +102,21 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="/img/Perro1.jpg" class="d-block w-100" alt="Perro 1">
+            <img src="/img/Perro1.jpg" class="d-block w-100" alt="Perro Bonito1">
             <div class="carousel-caption d-none d-md-block">
               <h5>Primer Perro</h5>
               <p>Este es el primer Perro en Adopción</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="/img/Perro2.jpg" class="d-block w-100" alt="Perro 2">
+            <img src="/img/Perro2.jpg" class="d-block w-100" alt="Perro Bonito 2">
             <div class="carousel-caption d-none d-md-block">
               <h5>Second slide label</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="/img/Perro3.jpg" class="d-block w-100" alt="Perro 3">
+            <img src="/img/Perro3.jpg" class="d-block w-100" alt="Perro Bonito 3">
             <div class="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -85,95 +132,114 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-  </div>
-
-  </section>
-
-  <!-- Options -->
-  <section class="options-sect">
-    <div class="options-area d-flex justify-content-around align-items-start flex-wrap">
-      <div class="opt">
-        <p class="opt-title">Adopción </p>
-        <img class="opt-img" src="/img/Perros-1.jpg">
-        <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
-
-        <p class="badge badge-light">4 disponibles</p>
-        <br><button class="btn btn-orange">Buscar </button>
-
-
-      </div>
-      <div class="opt" mg-top>
-        <p class="opt-title">Hogar Temporal </p>
-        <img class="opt-img" src="/img/Perros-2.jpg">
-        <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
-        <p class="badge badge-light">8 disponibles</p>
-        <br><button class="btn btn-orange">Buscar </button>
-      </div>
-      <div class="opt" mg-top>
-        <p class="opt-title">Voluntariado </p>
-        <img class="opt-img" src="/img/Perros-3.jpg">
-        <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
-        <p class="badge badge-light">10 disponibles</p>
-        <br><button class="btn btn-orange">Registrarse </button>
-      </div>
-      <div class="opt" mg-top>
-        <p class="opt-title">Donaciones </p>
-        <img class="opt-img" src="/img/Perros-4.jpg">
-        <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
-        <p class="badge badge-light">3 opciones</p>
-        <br><button class="btn btn-orange">Donar</button>
-      </div>
     </div>
+    </section>
+    <!-- Options -->
+    <section class="options-sect">
+      <div class="options-area d-flex justify-content-around align-items-start flex-wrap">
+        <div class="opt">
+          <p class="opt-title">Adopción </p>
+          <img class="opt-img" src="/img/Perros-1.jpg">
+          <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
 
-    <!-- Adoptions -->
-    <section class="adoptions-sect">
-      <div class="container monthly-adoptions-area">
-        <h3 class="section-title text-center">Adoptados del Mes</h3>
-        <div class="row">
-          <div class="img-container col-12">
-            <figure class="figure">
-              <img src="/img/Gato1.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
-              <figcaption class="figure-caption">Gato Lindo</figcaption>
-            </figure>
-          </div>
-          <div class="img-container col-12">
-            <figure class="figure">
-              <img src="/img/Gato2.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
-              <figcaption class="figure-caption">Gato Hermoso</figcaption>
-            </figure>
-          </div>
-          <div class="img-container col-12">
-            <figure class="figure">
-              <img src="/img/Gato3.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
-              <figcaption class="figure-caption">Gato Precioso</figcaption>
-            </figure>
-          </div>
-          <div class="img-container col-12">
-            <figure class="figure">
-              <img src="/img/Gato4.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
-              <figcaption class="figure-caption">Gato wapo</figcaption>
-            </figure>
-          </div>
-
-
+          <p class="badge badge-light">4 disponibles</p>
+          <br><button class="btn btn-orange">Buscar </button>
+        </div>
+        <div class="opt" mg-top>
+          <p class="opt-title">Hogar Temporal </p>
+          <img class="opt-img" src="/img/Perros-2.jpg">
+          <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
+          <p class="badge badge-light">8 disponibles</p>
+          <br><button class="btn btn-orange">Buscar </button>
+        </div>
+        <div class="opt" mg-top>
+          <p class="opt-title">Voluntariado </p>
+          <img class="opt-img" src="/img/Perros-3.jpg">
+          <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
+          <p class="badge badge-light">10 disponibles</p>
+          <br><button class="btn btn-orange">Registrarse </button>
+        </div>
+        <div class="opt" mg-top>
+          <p class="opt-title">Donaciones </p>
+          <img class="opt-img" src="/img/Perros-4.jpg">
+          <p class="opt-desc">Encuentra a tu mascota, lista para ser adoptada</p>
+          <p class="badge badge-light">3 opciones</p>
+          <br><button class="btn btn-orange">Donar</button>
         </div>
       </div>
-
+      <!-- Adoptions -->
+      <section class="adoptions-sect">
+        <div class="container monthly-adoptions-area">
+          <h3 class="section-title text-center">Adoptados del Mes</h3>
+          <div class="row">
+            <div class="img-container col-12 col-md-6">
+              <figure class="figure">
+                <img src="/img/Gato1.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes"
+                  data-toggle="tooltip" data-placement="bottom" title="Gracias Familia López">
+                <figcaption class="figure-caption">Gato Lindo</figcaption>
+              </figure>
+            </div>
+            <div class="img-container col-12 col-md-6">
+              <figure class="figure">
+                <img src="/img/Gato2.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
+                <figcaption class="figure-caption">Gato Hermoso</figcaption>
+              </figure>
+            </div>
+            <div class="img-container col-12 col-md-6">
+              <figure class="figure">
+                <img src="/img/Gato3.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
+                <figcaption class="figure-caption">Gato Precioso</figcaption>
+              </figure>
+            </div>
+            <div class="img-container col-12 col-md-6">
+              <figure class="figure">
+                <img src="/img/Gato4.jpg" class="figure-img img-fluid rounded" alt="Adoptado este mes">
+                <figcaption class="figure-caption">Gato wapo</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+   
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
 
-  </section>
-
-
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
+      (function() {
+  
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const form = document.getElementById('contact-form');
+    var validation=form.addEventListener('submit', function(event) {
+      
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }else{ 
+          console.log(event);
+          event.preventDefault();
+          event.stopPropagation();
+          $('#contact-modal').modal('hide');
+          $('#contact-alert').show();
+          setTimeout (()=> {
+            $('#contact-alert').hide();
+          },10000); 
+        }
+        form.classList.add('was-validated');
+      }, false);
+    }, false);
+   })();
+    </script>
+ </body>
 </html>
